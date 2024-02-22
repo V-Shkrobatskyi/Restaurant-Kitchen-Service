@@ -17,6 +17,7 @@ class Cook(AbstractUser):
     years_of_experience = models.DecimalField(
         max_digits=2,
         decimal_places=0,
+        default=0,
         blank=True,
     )
 

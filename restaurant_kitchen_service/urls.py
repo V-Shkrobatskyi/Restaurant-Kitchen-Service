@@ -1,3 +1,4 @@
+# noinspection PyInterpreter
 """
 URL configuration for restaurant_kitchen_service project.
 

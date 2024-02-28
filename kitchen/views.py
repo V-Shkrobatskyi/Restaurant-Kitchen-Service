@@ -24,11 +24,14 @@ class DishTypeListView(generic.ListView):
     model = DishType
     template_name = "kitchen/dish_type_list.html"
     context_object_name = "dish_type_list"
+    paginate_by = 5
 
 
 class CookListView(generic.ListView):
     model = Cook
+    paginate_by = 5
 
 
 class DishListView(generic.ListView):
     model = Dish
+    paginate_by = 5

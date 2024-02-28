@@ -5,6 +5,7 @@ from kitchen.views import (
     CookListView,
     DishListView,
     CookDetailView,
+    DishDetailView,
 )
 
 
@@ -14,6 +15,7 @@ urlpatterns = [
     path("cooks/", CookListView.as_view(), name="cook-list"),
     path("cooks/<int:pk>/", CookDetailView.as_view(), name="cook-detail"),
     path("dishes/", DishListView.as_view(), name="dish-list"),
+    path("dishes/<int:pk>/", DishDetailView.as_view(), name="dish-detail"),
 ]
 
 app_name = "kitchen"

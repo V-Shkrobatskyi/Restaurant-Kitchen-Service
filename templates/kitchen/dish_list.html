@@ -14,7 +14,7 @@
       {% for dish in dish_list %}
         <tr>
           <td>
-            {{ dish.id }}
+            <a href="{% url "kitchen:dish-detail" pk=dish.id %} ">{{ dish.id }}</a>
           </td>
           <td>
              {{ dish.name }}

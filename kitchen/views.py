@@ -20,11 +20,11 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "kitchen/index.html", context)
 
 
-class DishTypesListView(generic.ListView):
+class DishTypeListView(generic.ListView):
     model = DishType
     template_name = "kitchen/dish_types_list.html"
     context_object_name = "dish_type_list"
 
 
-class CooksListView(generic.ListView):
+class CookListView(generic.ListView):
     model = Cook

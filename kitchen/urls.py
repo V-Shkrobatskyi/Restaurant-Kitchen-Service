@@ -1,11 +1,11 @@
 from django.urls import path
 
-from kitchen.views import index, DishTypesListView, CooksListView
+from kitchen.views import index, DishTypeListView, CookListView
 
 urlpatterns = [
     path("", index, name="index"),
-    path("dish-types/", DishTypesListView.as_view(), name="dish-type-list"),
-    path("cooks/", CooksListView.as_view(), name="cook-list"),
+    path("dish-types/", DishTypeListView.as_view(), name="dish-type-list"),
+    path("cooks/", CookListView.as_view(), name="cook-list"),
 ]
 
 app_name = "kitchen"

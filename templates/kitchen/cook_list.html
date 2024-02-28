@@ -13,7 +13,7 @@
       {% for cook in cook_list %}
         <tr>
           <td>
-            {{ cook.id }}
+            <a href="{{ cook.get_absolute_url }}">{{ cook.id }}</a>
           </td>
           <td>
              {{ cook.first_name }} {{ cook.last_name }}

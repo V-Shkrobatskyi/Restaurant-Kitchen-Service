@@ -5,7 +5,7 @@
     <li class="list-group-item">
       <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
-        <button type="submit">Logout</button>
+        <input type="submit" value="Logout" class="btn btn-secondary" />
       </form>
     </li>
   {% else %}

@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from django import forms
 
 from kitchen.models import Cook
 
@@ -18,3 +19,14 @@ def validate_years_of_experience(years_of_experience,):
         raise ValidationError("Years of experience should be maximum 2 digits")
 
     return years_of_experience
+
+
+class CookExperienceUpdateForm(forms.ModelForm):
+    years_of_experience = forms.CharField(
+        required=True,
+        validators=[validate_years_of_experience,]
+    )
+
+    class Meta:
+        model = Cook
+        fields = ("years_of_experience",)

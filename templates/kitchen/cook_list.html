@@ -4,6 +4,11 @@
   <h3>Cook List
     <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page">Create</a>
   </h3>
+
+  {% block search %}
+    {% include "includes/search.html" %}
+  {% endblock %}
+
   {% if cook_list %}
     <table class="table">
       <tr>

@@ -5,6 +5,10 @@
     <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-primary link-to-page">Create</a>
   </h1>
 
+  {% block search %}
+    {% include "includes/search.html" %}
+  {% endblock %}
+
   {% if dish_type_list %}
     <table class="table">
       <tr>
@@ -33,8 +37,8 @@
         </tr>
       {% endfor %}
     </table>
-
   {% else %}
     <p>There are no Dish types in Kitchen</p>
   {% endif %}
+
 {% endblock %}

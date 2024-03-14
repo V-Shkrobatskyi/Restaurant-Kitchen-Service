@@ -18,7 +18,25 @@
               </span>
             </button>
             <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0" id="navigation">
-              <ul class="navbar-nav navbar-nav-hover ms-lg-12 ps-lg-5 w-100">
+
+              <ul class="navbar-nav navbar-nav-hover ms-lg-8 ps-lg-5 w-100">
+
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" aria-expanded="false" href="{% url 'kitchen:dish-type-list' %}">
+                    Dish types
+                  </a>
+                </li>
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" aria-expanded="false" href="{% url 'kitchen:dish-list' %}">
+                    Dishes
+                  </a>
+                </li>
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" aria-expanded="false" href="{% url 'kitchen:cook-list' %}">
+                    Cooks
+                  </a>
+                </li>
+
                 <li class="nav-item dropdown dropdown-hover mx-2">
                   <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                     Pages

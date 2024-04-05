@@ -40,6 +40,11 @@
             <a href="{% url 'kitchen:cook-create' %}" style="float: right" class="btn btn-primary link-to-page mb-1">Create</a>
           </h3>
         </div>
+
+        {% block search %}
+          {% include "includes/search.html" %}
+        {% endblock %}
+
         <div class="table-responsive m-3 mt-0 mb-0 text-center">
           {% if cook_list %}
             <table class="table align-items-center table-flush mb-0">

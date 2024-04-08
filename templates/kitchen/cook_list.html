@@ -10,8 +10,8 @@
 {% block content %}
 
 <header class="header-2">
-  <div class="page-header section-height-75 max-height-200 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg4-0.jpg')">
-    <div class="position-absolute w-100 z-index-1 bottom-0">
+  <div class="page-header relative min-height-400" style="background-image: url('{{ ASSETS_ROOT }}/img/bg4-0.jpg')">
+    <div class="position-absolute w-100 z-index-0 bottom-0">
       <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
         <defs>
           <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
@@ -30,11 +30,11 @@
   </div>
 </header>
 
-<section class="col-md-12 position-absolute z-index-2 top-5" id="count-stats">
+<section class="col-md-12 z-index-2 mt-n12">
   <div class="container">
     <div class="row">
     <div class="col">
-      <div class="card shadow">
+      <div class="card border-radius-xl overflow-hidden shadow-lg">
         <div class="card-header border-0">
           <h3 class="mb-0">Cook List
             <a href="{% url 'kitchen:cook-create' %}" style="float: right" class="btn btn-primary link-to-page mb-1">Create</a>

@@ -8,6 +8,8 @@ from kitchen.models import Cook, Dish
 
 
 class CookCreationForm(UserCreationForm):
+    head_text = "Create Cook"
+
     class Meta(UserCreationForm.Meta):
         model = Cook
         fields = UserCreationForm.Meta.fields + ("first_name", "last_name", "years_of_experience", )
@@ -30,6 +32,7 @@ def validate_years_of_experience(years_of_experience,):
 
 
 class CookExperienceUpdateForm(forms.ModelForm):
+    head_text = "Update Years of experience"
     years_of_experience = forms.CharField(
         required=True,
         validators=[validate_years_of_experience,]

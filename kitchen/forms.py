@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django import forms
-from django.forms import TextInput
+from django.forms import TextInput, Textarea, NumberInput, Select
 
 from kitchen.models import Cook, Dish
 
@@ -18,7 +18,7 @@ class CookCreationForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget = TextInput(attrs={
-                'class': 'form-control mb-3'})
+                "class": "form-control mb-3"})
 
     def clean_years_of_experience(self):
         return validate_years_of_experience(self.cleaned_data["years_of_experience"])
@@ -46,8 +46,19 @@ class CookExperienceUpdateForm(forms.ModelForm):
 class DishForm(forms.ModelForm):
     cooks = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
-        widget=forms.CheckboxSelectMultiple,
+        widget=forms.CheckboxSelectMultiple(),
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["name"].widget = TextInput(attrs={
+            "class": "form-control mb-3"})
+        self.fields["description"].widget = Textarea(attrs={
+            "class": "form-control mb-3",
+            "rows": "3",
+        })
+        self.fields["price"].widget = NumberInput(attrs={
+            "class": "form-control mb-3"})
 
     class Meta:
         model = Dish

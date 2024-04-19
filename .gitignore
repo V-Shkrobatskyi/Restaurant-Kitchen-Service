@@ -1,8 +1,2 @@
 .idea
 venv
-**__pycache__
-.vscode/
-*.iml
-.env
-.DS_Store
-db.sqlite3

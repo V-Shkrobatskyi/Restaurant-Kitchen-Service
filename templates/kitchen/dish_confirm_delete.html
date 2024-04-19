@@ -1,0 +1,40 @@
+{% extends 'layouts/base-presentation.html' %}
+
+{% block title %} {{ form.head_text }} {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} {% endblock body_class %}
+
+{% block content %}
+  {% include "includes/header.html" %}
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles_dish.css' %}">
+
+  <section class="col-md-12 z-index-2 mt-n12">
+    <div class="container w-50">
+      <div class="row">
+        <div class="col">
+          <div class="card border-radius-xl overflow-hidden shadow-lg">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Delete dish</h3>
+              <p>Are you sure you want to delete dish: <strong>{{ dish.name }}</strong> ?</p>
+              <form action="" method="post">
+                {% csrf_token %}
+
+                <input class="btn bg-gradient-danger w-auto me-2" type="submit" value="Yes, delete">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+  {% include "includes/javascripts.html" %}
+{% endblock javascripts %}
+

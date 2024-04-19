@@ -1,0 +1,83 @@
+{% extends 'layouts/base-presentation.html' %}
+
+{% block title %} {{ form.head_text }} {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} {% endblock body_class %}
+
+{% block content %}
+  {% include "includes/header.html" %}
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles_cook.css' %}">
+
+  <section class="col-md-12 z-index-2 mt-n12">
+    <div class="container w-50">
+      <div class="row">
+        <div class="col">
+          <div class="card border-radius-xl overflow-hidden shadow-lg">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Username: {{ cook.username }}
+                <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn bg-gradient-danger w-auto me-2">
+                  Delete
+                </a>
+                <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn bg-gradient-secondary w-auto me-2">
+                  Update years of experience
+                </a>
+              </h3>
+            </div>
+
+            <div class="card-body pt-0">
+              <p><strong>First name:</strong> {{ cook.first_name }}</p>
+              <p><strong>Last name:</strong> {{ cook.last_name }}</p>
+              <p><strong>Years of experience:</strong> {{ cook.years_of_experience }}</p>
+              <p><strong>Is staff:</strong> {{ cook.is_staff }}</p>
+
+              <div class="ml-3">
+                <h4>Dishes</h4>
+
+                  {% if cook.dishes.all %}
+                    <table class="table align-items-center table-flush mb-0">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col"><strong>ID:</strong></th>
+                          <th scope="col"><strong>Name:</strong></th>
+                          <th scope="col"><strong>Dish type:</strong></th>
+                        </tr>
+                      </thead>
+
+                        <tbody>
+                          {% for dish in cook.dishes.all %}
+                            <tr>
+                              <td>
+                                {{ dish.id }}
+                              </td>
+                              <td>
+                                {{ dish.name }}
+                              </td>
+                              <td>
+                                {{ dish.dish_type.name }}
+                              </td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                  {% else %}
+                    <p>No dishes!</p>
+                  {% endif %}
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </section>
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+  {% include "includes/javascripts.html" %}
+{% endblock javascripts %}

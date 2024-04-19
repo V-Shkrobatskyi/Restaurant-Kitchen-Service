@@ -1,0 +1,85 @@
+{% extends 'layouts/base-presentation.html' %}
+
+{% block title %} Cook list {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} {% endblock body_class %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles_cook.css' %}">
+
+<section class="col-md-12 z-index-2 mt-n12">
+  <div class="container">
+    <div class="row">
+    <div class="col">
+      <div class="card border-radius-xl overflow-hidden shadow-lg">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Cook List
+            <a href="{% url 'kitchen:cook-create' %}" style="float: right" class="btn bg-gradient-success w-auto me-2">Create</a>
+          </h3>
+        </div>
+
+        {% block search %}
+          {% include "includes/search.html" %}
+        {% endblock %}
+
+        <div class="table-responsive m-3 mt-0 mb-0 text-center">
+          {% if cook_list %}
+            <table class="table align-items-center table-flush mb-0">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Years of experience</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for cook in cook_list %}
+                  <tr>
+                    <td>
+                      <a href="{{ cook.get_absolute_url }}">{{ cook.id }}</a>
+                    </td>
+                    <td>
+                       {{ cook.first_name }} {{ cook.last_name }}
+                    </td>
+                    <td>
+                      {{ cook.username }}
+                    </td>
+                    <td>
+                      {{ cook.years_of_experience }}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% endif %}
+        </div>
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+
+              {% block pagination %}
+                {% include "includes/pagination.html" %}
+              {% endblock %}
+
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+  {% include "includes/javascripts.html" %}
+{% endblock javascripts %}

@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django import forms
-from django.forms import TextInput, Textarea, NumberInput, Select
+from django.forms import TextInput, Textarea, NumberInput
 
 from kitchen.models import Cook, Dish
 

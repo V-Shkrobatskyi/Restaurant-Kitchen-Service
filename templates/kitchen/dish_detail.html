@@ -37,15 +37,16 @@
               <div class="ml-3">
                 <h4>Cooks</h4>
 
-                {% if dish in user.dishes.all %}
-                  <a href="{% url 'kitchen:toggle-dish-assign' pk=dish.id %}" class="btn bg-gradient-danger w-auto me-2">
-                    Delete me from this dish
-                  </a>
-                {% else %}
-                  <a href="{% url 'kitchen:toggle-dish-assign' pk=dish.id %}" class="btn bg-gradient-info w-auto me-2">
-                    Assign me from this dish
-                  </a>
-                {% endif %}
+                <form action="{% url 'kitchen:dish-assign' pk=dish.id %}" method="post">
+                  {% csrf_token %}
+                  {% if user.is_authenticated %}
+                    {% if user in dish.cooks.all %}
+                      <input class="btn bg-gradient-danger w-auto me-2" type="submit" value="Delete me from this dish">
+                    {% else %}
+                      <input class="btn bg-gradient-info w-auto me-2" type="submit" value="Assign me to this dish">
+                    {% endif %}
+                  {% endif %}
+                </form>
 
                 <ul>
                   {% for cook in dish.cooks.all %}

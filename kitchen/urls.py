@@ -15,7 +15,7 @@ from kitchen.views import (
     DishCreateView,
     DishUpdateView,
     DishDeleteView,
-    toggle_assign_to_dish,
+    DishAssignView,
 )
 
 

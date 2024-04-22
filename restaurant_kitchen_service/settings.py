@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-c^0&6u$h)t4eks-szkkjfd@*i-lu)-1ghqko2ep#1e(0$)y!d1")
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "c^0&6u$h)t4eks-szkkjfd@*i-lu)-1ghqko2ep#1e(0$)y!d1")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
@@ -138,3 +138,15 @@ AUTH_USER_MODEL = "kitchen.Cook"
 LOGIN_REDIRECT_URL = "/"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = 3600
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_SSL_REDIRECT = True
+
+SECURE_HSTS_PRELOAD = True

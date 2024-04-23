@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -84,6 +86,9 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES["default"].update(db_from_env)
 
 
 # Password validation
@@ -126,6 +131,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+STATIC_ROOT = "staticfiles/"
+
 ASSETS_ROOT = "/static/assets"
 
 # Default primary key field type
@@ -139,14 +146,14 @@ LOGIN_REDIRECT_URL = "/"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-CSRF_COOKIE_SECURE = True
-
-SESSION_COOKIE_SECURE = True
-
-SECURE_HSTS_SECONDS = 3600
-
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-
-SECURE_SSL_REDIRECT = True
-
-SECURE_HSTS_PRELOAD = True
+# CSRF_COOKIE_SECURE = True
+#
+# SESSION_COOKIE_SECURE = True
+#
+# SECURE_HSTS_SECONDS = 3600
+#
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#
+# SECURE_SSL_REDIRECT = True
+#
+# SECURE_HSTS_PRELOAD = True

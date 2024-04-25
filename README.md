@@ -4,9 +4,11 @@ Django project for managing dishes and cooks in Restaurant
 
 ## Check it out!
 
-[Not deployed yet]
+[Restaurant Kitchen Service deployed to Render](https://restaurant-kitchen-service-zqs1.onrender.com/)
 
 ## Installation
+
+Python3 must be already installed
 
 ```shell
 git clone https://github.com/V-Shkrobatskyi/restaurant-kitchen-service

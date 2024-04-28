@@ -6,6 +6,8 @@ Django project for managing dishes and cooks in Restaurant
 
 [Restaurant Kitchen Service deployed to Render](https://restaurant-kitchen-service-zqs1.onrender.com/)
 
+For test use login/password: user/user12345
+
 ## Installation
 
 Python3 must be already installed

@@ -120,7 +120,9 @@
                     <input type="hidden" value="Logout" />
                     <a class="nav-link nav-link-icon me-2" href="javascript:;" onclick="parentNode.submit();">
                       <i class="fa fa-sign-out me-1"></i>
-                      <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">Logout</p>
+                      <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">
+                        <strong>{{ user.username }}</strong> logout
+                      </p>
                     </a>
                   </form>
                 </li>

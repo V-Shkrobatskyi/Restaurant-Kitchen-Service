@@ -5,7 +5,7 @@
         <nav class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
           <div class="container-fluid">
 
-            <a href="/kitchen/" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">
+            <a href="{% url 'kitchen:index' %}" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">
                 Restaurant Kitchen Service
             </a>
 
@@ -120,7 +120,9 @@
                     <input type="hidden" value="Logout" />
                     <a class="nav-link nav-link-icon me-2" href="javascript:;" onclick="parentNode.submit();">
                       <i class="fa fa-sign-out me-1"></i>
-                      <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">Logout</p>
+                      <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">
+                        <strong>{{ user.username }}</strong> logout
+                      </p>
                     </a>
                   </form>
                 </li>

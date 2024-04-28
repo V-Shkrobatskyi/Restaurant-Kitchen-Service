@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-c^0&6u$h)t4eks-szkkjfd@*i-lu)-1ghqko2ep#1e(0$)y!d1"
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "restaurant-kitchen-service-zqs1.onrender.com"]
 
 
 # Application definition
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -84,6 +86,9 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES["default"].update(db_from_env)
 
 
 # Password validation
@@ -126,6 +131,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+STATIC_ROOT = "staticfiles/"
+
 ASSETS_ROOT = "/static/assets"
 
 # Default primary key field type
@@ -135,6 +142,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "kitchen.Cook"
 
-LOGIN_REDIRECT_URL = "/kitchen/"
+LOGIN_REDIRECT_URL = "/"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# CSRF_COOKIE_SECURE = True
+#
+# SESSION_COOKIE_SECURE = True
+#
+# SECURE_HSTS_SECONDS = 3600
+#
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#
+# SECURE_SSL_REDIRECT = True
+#
+# SECURE_HSTS_PRELOAD = True
